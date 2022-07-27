@@ -265,9 +265,9 @@ mx >>= toMonad = mx -- right identity
 JavaScript
 
 ```js
-toMonad(x).flatMap(f) = f(x) -- left identity
-mx.flatMap(toMonad) = mx -- right identity
-mx.flatMap(f).flatMap(g) = mx.flatMap(x => (f(x).flatMap(g))) -- associativity
+toMonad(x).flatMap(f) = f(x) // left identity
+mx.flatMap(toMonad) = mx // right identity
+mx.flatMap(f).flatMap(g) = mx.flatMap(x => (f(x).flatMap(g))) // associativity
 ```
 
 # Wrapping up
