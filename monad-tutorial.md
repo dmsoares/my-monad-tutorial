@@ -32,7 +32,7 @@ We must divide to conquer and we must be able to compose to defeat complexity.
 
 Back to Lego! What if we think of our functions, our programs, as Lego bricks? Below, we have a playground with three functions. Each of them takes an `Int` and returns an `Int`. It doesn't matter what they do with the argument, it just matters that, whatever they do, an `Int` will come out of it after they're done with their computation.
 
-![Simple playground](./monoid-functions.png)
+![Playground One](./playground-one.png)
 
 What this means is that, no matter how we combine those function bricks, the resulting constructions all still belong in the same playground and can be combined with functions in that playground.
 
@@ -47,6 +47,8 @@ f . g = \x -> f (g x) -- "\x -> ..." is a lambda expression, the equivalent of a
 In JavaScript, composing `f` with `g` results in having a new function `fCg`, such that `fCg = x => f(g(x))`
 
 ### For a more specific example
+
+![Playground Two](./playground-two.png)
 
 In Haskell:
 
@@ -107,7 +109,7 @@ For the purpose of our example, the semantics of failure and success will be the
 
 Thus, in our new playground all our functions now have type `Int -> [Int]`, reflecting the possibility of failure.
 
-[Monad functions](./monad-tutorial/monad-functions.png)
+![Playground Three](./playground-three.png)
 
 Suddenly, when we try to play with our Lego bricks, we realize they are broken. They don't compose anymore!
 
