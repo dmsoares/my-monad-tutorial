@@ -175,7 +175,7 @@ What we miss then is a function of type `[[a]] -> [a]`. We might know it as `con
 
 In other words, we need to be able to implement a higher-order function that combines `map` and `flat`.
 
-Provided we can implement such a function (and another we will see we look at the monad laws) for our lists, arrays or, more generally, for any 'container' type, we have turned that type into a **monad**.
+Provided we can implement such a function (and another we will see when we look at the monad laws) for our lists, arrays or, more generally, for any 'container' type, we have turned that type into a **monad**.
 
 Both Haskell and JavaScript already provide implementations for, respectively, lists and arrays. In Haskell that would be `(=<<)` (specialised to lists, as it is overloaded), and in JavaScript `Array.prototype.flatMap()`.
 
@@ -198,15 +198,15 @@ resultC = madd9 1 -- [10]
 JavaScript:
 
 ```js
-const compose = (f, g) => x => g(x).flatMap(f)
+const compose = (f, g) => x => g(x).flatMap(f);
 
-const madd3 = compose(madd2, madd1)
-const madd5 = compose(madd3, madd2)
-const madd9 = compose(madd3, compose(madd5, madd1)
+const madd3 = compose(madd2, madd1);
+const madd5 = compose(madd3, madd2);
+const madd9 = compose(madd3, compose(madd5, madd1));
 
-const resultA = madd3(1) // [4]
-const resultB = madd5(1) // [6]
-const resultC = madd9(1) // [10]
+const resultA = madd3(1); // [4]
+const resultB = madd5(1); // [6]
+const resultC = madd9(1); // [10]
 ```
 
 In practice, we would not write a `compose` function most of the time, but just sequence our functions:
