@@ -272,7 +272,7 @@ mx.flatMap(f).flatMap(g) = mx.flatMap(x => (f(x).flatMap(g))) // associativity
 
 It is important to draw attention to the fact that I said very little about the implementation of `(>>=)` or `flatMap`. Indeed, that operation needs to be specifically tailored to the type of container we want to turn into a `monad`.
 
-In JavaScript, for example, `flatMap` is already implemented for arrays, but nothing prevents us from writing our own _flatMaps_ for other types (or classes, more appropriately) we create. If we do, we can call them `bind`, as `(>>=)` is called in Haskell.
+In JavaScript, for example, `flatMap` is already implemented for arrays, but nothing prevents us from writing our own _flatMaps_ for other types (or classes, more appropriately) we create. If we do, we can call them `bind`, as `(>>=)` is called in Haskell. By the way, in the playground that we created above, what happens when one of the computations in a sequence fails? Does it get ignored? Do they all fail?
 
 Just as a final word, don't be stuck into thinking monads only exist to handle failure. Many kinds of monads exist and more can be created, another notable one being the State monad, for avoiding shared mutable state by allowing composition of functions of the type `State -> (Value, State)`.
 
