@@ -280,6 +280,8 @@ In the end, I hope I have gotten **monads** at least partially right. A lot in m
 
 ## Further reading
 
-[Brian Beckman - Don't Fear The Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
+[Youtube: Brian Beckman - Don't Fear The Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
+
 [HaskellWiki - All About Monads](https://wiki.haskell.org/All_About_Monads)
+
 [Graham Hutton - Programming in Haskell](https://www.cs.nott.ac.uk/~pszgmh/pih.html)
