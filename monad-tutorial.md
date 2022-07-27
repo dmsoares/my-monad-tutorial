@@ -4,11 +4,9 @@ This is my small contribution to the effort (some would certainly call it the **
 
 More precisely, and pardon my shamelessness, this is an attempt at explaining it to **myself**. I just thought that it could be fun to bring along anyone else that would also like to think about this with me.
 
-To be totally honest upfront, I don't think one can understand what a monad is just by reading a small essay like this one. One needs to get their hands dirty. The will to write this tutorial came about around 10 months into my journey to the realm of Haskell and functional programming. Ten whole months to _get_ monads! I'm not sure this is a testament to my slowness or to my perseverance, but I hope it's the latter.
-
 Another disclaimer should be made: I'm talking about **monads** as they appear in programming languages such as Haskell. I (unfortunately) still only have a very small clue about what a monad is in terms of **Category Theory**, but I will get there eventually as well!
 
-Anyway, here is my attempt. If I am the only one coming out of this tutorial with a bit more clarity on the matter I will be happy. If anyone else gets something out of it as well I will be delighted. Any criticisms will leave me ecstatic.
+Anyway, here is my attempt. If I am the only one coming out of this tutorial with a bit more clarity on the matter I will be happy. If anyone else gets something out of it as well I will be delighted. Any criticisms will make me ecstatic.
 
 # The problem
 
@@ -179,7 +177,7 @@ In other words, we need to be able to implement a higher-order function that com
 
 Provided we can implement such a function (and another we will see we look at the monad laws) for our lists, arrays or, more generally, for any 'container' type, we have turned that type into a **monad**.
 
-Both Haskell and JavaScript already provide implementations for, respectively, lists and arrays. In Haskell that would be `(=<<)` (specialised to lists), and in JavaScript `Array.prototype.flatMap()`.
+Both Haskell and JavaScript already provide implementations for, respectively, lists and arrays. In Haskell that would be `(=<<)` (specialised to lists, as it is overloaded), and in JavaScript `Array.prototype.flatMap()`.
 
 Let's see it in action:
 
@@ -272,12 +270,16 @@ mx.flatMap(f).flatMap(g) = mx.flatMap(x => (f(x).flatMap(g))) // associativity
 
 # Wrapping up
 
-It is important to draw attention to the fact that I said very little about the implementation of `(>>=)` or `flatMap`. Indeed, that crucial function can have multiple implementations depending on how we want our monad to behave.
+It is important to draw attention to the fact that I said very little about the implementation of `(>>=)` or `flatMap`. Indeed, that operation needs to be specifically tailored to the type of container we want to turn into a `monad`.
 
-In this case, for instance, how do we want to handle failure? If 1 out of 10 computations fail, should we just fail the entire sequence? Should we just ignore the failed operation and proceed as if nothing happened? The implementation of the monad will dictate our strategy.
+In JavaScript, for example, `flatMap` is already implemented for arrays, but nothing prevents us from writing our own _flatMaps_ for other types (or classes, more appropriately) we create. If we do, we can call them `bind`, as `(>>=)` is called in Haskell.
 
-In JavaScript, for example, `flatMap` is already implemented, but nothing prevents us from either overriding it or creating our own function. If we do, we can call it `bind`, as `(>>=)` is called in Haskell.
-
-Just as a final word, don't be stuck into thinking monads only exist to handle failure (though that is certainly one of the most common). Many kinds of monads exist and more can be created, another notable one being the State monad, for avoiding shared mutable state by allowing composition of functions of the type `State -> (Value, State)`.
+Just as a final word, don't be stuck into thinking monads only exist to handle failure. Many kinds of monads exist and more can be created, another notable one being the State monad, for avoiding shared mutable state by allowing composition of functions of the type `State -> (Value, State)`.
 
 In the end, I hope I have gotten **monads** at least partially right. A lot in my examples and explanation is simplified, both because I lack the knowledge to do better and also because I chose not to overwhelm. This is perhaps the advantage of writing a tutorial so close in time to my own 'aha!' moment, even though I already had the intuition for how to use them. Nothing like trying to explain in order to learn.
+
+## Further reading
+
+[Brian Beckman - Don't Fear The Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
+[HaskellWiki - All About Monads](https://wiki.haskell.org/All_About_Monads)
+[Graham Hutton - Programming in Haskell](https://www.cs.nott.ac.uk/~pszgmh/pih.html)
