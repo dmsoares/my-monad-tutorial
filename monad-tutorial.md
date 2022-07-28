@@ -274,7 +274,7 @@ It is important to draw attention to the fact that I said very little about the 
 
 In JavaScript, for example, `flatMap` is already implemented for arrays, but nothing prevents us from writing our own _flatMaps_ for other types (or classes, more appropriately) we create. If we do, we can call them `bind`, as `(>>=)` is called in Haskell. By the way, in the playground that we created above, what happens when one of the computations in a sequence fails? Does it get ignored? Do they all fail?
 
-Just as a final word, don't be stuck into thinking monads only exist to handle failure. Many kinds of monads exist and more can be created, another notable one being the State monad, for avoiding shared mutable state by allowing composition of functions of the type `State -> (Value, State)`.
+Just as a final word, don't be stuck into thinking monads only exist to handle failure. Many kinds of monads exist and more can be created, another notable one being the State monad, for avoiding shared mutable state by allowing composition of functions of the type `Value -> State -> (Value, State)`.
 
 In the end, I hope I have gotten **monads** at least partially right. A lot in my examples and explanation is simplified, both because I lack the knowledge to do better and also because I chose not to overwhelm. This is perhaps the advantage of writing a tutorial so close in time to my own 'aha!' moment, even though I already had the intuition for how to use them. Nothing like trying to explain in order to learn.
 
